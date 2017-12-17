@@ -4,8 +4,9 @@ public class Perceptron {
     
     float learningRate = 0.01f;    // Makes training slower to not make it "skip over" the perfect weights.
     
-    /*
-    Simplified signum function
+    /**
+     Simplified signum function
+     @param sum The sum of all weights multiplied with the inputs
      */
     int sign(float sum) {
         if(sum >= 0)
@@ -27,8 +28,9 @@ public class Perceptron {
         }
     }
     
-    /*
-    Perform a guess of the point's value
+    /**
+     Perform a guess of the point's value
+     @param point point to guess the value from
      */
     int guess(Point point) {
         float sum = 0;
@@ -37,8 +39,9 @@ public class Perceptron {
         return sign(sum);
     }
     
-    /*
-    Train the perceptron with a point.
+    /**
+     Train the perceptron with a point.
+     @param point Point to train the perceptron from
      */
     void train(Point point) {
         float error = point.getValue() - guess(point);

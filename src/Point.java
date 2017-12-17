@@ -6,7 +6,7 @@ public class Point {
     private int value; // What the neural net tries to guess
     
     
-    /*
+    /**
     Constructor for the Point class, randomizes the x and y values and assigns it a value depending on the coordinates.
      */
     Point() {
@@ -20,6 +20,12 @@ public class Point {
         }
     }
     
+    
+    /**
+     * Constructor for the Point class
+     * @param x x coordinate for the point
+     * @param y y coordinate for the point
+     */
     Point(int x, int y) {
         if((x % 2 == 0) && (y % 2 == 0)) {                        // If both x and y are divisible by two, set
             value = 1;                                            // value to 1.

@@ -1,6 +1,4 @@
 import java.io.*;
-import java.util.Random;
-import java.util.concurrent.Executor;
 
 public class Test {
     
@@ -28,7 +26,7 @@ public class Test {
         Execute();
     }
     
-    /*
+    /**
     Function that trains until the network can guess all points' values correctly.
     
     Does not currently work.
@@ -54,8 +52,9 @@ public class Test {
         
     }
     
-    /*
-    Load all training points from a file
+    /**
+     Load all training points from a file
+     @param amount The amount of inputs to generate
      */
     static Point[] loadInputs(int amount) throws IOException {
         File inputFile = new File("TrainingInputs.txt");
@@ -76,8 +75,9 @@ public class Test {
         return inputs;
     }
     
-    /*
+    /**
     Randomize a select number of points to generate into the file for loadInputs() to load later.
+    @param amount The amount of inputs to generate
      */
     private static void generateInputs(int amount) throws IOException {
         File inputsFile = new File("TrainingInputs.txt");
