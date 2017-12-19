@@ -24,7 +24,7 @@ public class Test {
     public static void main(String[] args) throws IOException {
         generateInputs(10);
         TrainingInputs = loadInputs(10);
-        Execute(1000000);
+        Execute(10);
     }
     
     /**
@@ -49,9 +49,9 @@ public class Test {
                 }
                 iterations++;
             } while(incorrect != 0);
-            save(iterations);
+            //save(iterations);
             times--;
-            System.out.println(times);
+            System.out.println(iterations);
         }
     }
     
