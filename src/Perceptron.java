@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Perceptron {
     
-    float learningRate = 0.01f;    // Makes training slower to not make it "skip over" the perfect weights.
+    float learningRate = 0.1f;    // Makes training slower to not make it "skip over" the perfect weights.
     
     /**
      Simplified signum function
@@ -12,7 +12,7 @@ public class Perceptron {
         if(sum >= 0)
             return 1;
         else
-            return 0;
+            return -1;
     }
     
     float[] weights = new float[2];
@@ -47,8 +47,10 @@ public class Perceptron {
         float error = point.getValue() - guess(point);
     
         weights[0] += error * point.getX() * learningRate;
-        weights[1] += error * point.getY() * learningRate;
-        
+        weights[1] -= error * point.getY() * learningRate;
+
+        //System.out.println("Weight1 = " + weights[0]);
+        //System.out.println("Weight2 = " + weights[1]);
     }
     
 }

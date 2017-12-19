@@ -13,11 +13,10 @@ public class Point {
         Random rnd = new Random();
         x = rnd.nextInt(800);
         y = rnd.nextInt(600);
-        if((x % 2 == 0) && (y % 2 == 0)) {                        // If both x and y are divisible by two, set
-            value = 1;                                            // value to 1.
-        } else {
-            value = 0;
-        }
+        if(x > y)
+            value = 1;
+        else
+            value = -1;
     }
     
     
@@ -27,11 +26,10 @@ public class Point {
      * @param y y coordinate for the point
      */
     Point(int x, int y) {
-        if((x % 2 == 0) && (y % 2 == 0)) {                        // If both x and y are divisible by two, set
-            value = 1;                                            // value to 1.
-        } else {
-            value = 0;
-        }
+        if(x > y)
+            value = 1;
+        else
+            value = -1;
         this.x = x;
         this.y = y;
     }

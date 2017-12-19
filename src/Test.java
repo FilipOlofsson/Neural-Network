@@ -22,8 +22,9 @@ public class Test {
     };
     
     public static void main(String[] args) throws IOException {
-        generateInputs(100);
-        Execute();
+        generateInputs(10);
+        TrainingInputs = loadInputs(10);
+        Execute(1000000);
     }
     
     /**
@@ -31,24 +32,39 @@ public class Test {
     
     Does not currently work.
      */
-    static void Execute() throws IOException {
-        TrainingInputs = loadInputs(100);
+    static void Execute(int times) throws IOException {
         int incorrect;
-        int iterations = 0;
-        do {
-            incorrect = 0;
-            Perceptron hidden = new Perceptron();
-            for(int i = 0; i < TrainingInputs.length; i++) {
-                hidden.train(TrainingInputs[i]);
-            }
-            for(int i = 0; i < realInputs.length; i++) {
-                if(hidden.guess(realInputs[i]) != realInputs[i].getValue()) {
-                    incorrect++;
+        while(times > 0) {
+            int iterations = 0;
+            do {
+                incorrect = 0;
+                Perceptron hidden = new Perceptron();
+                for(int i = 0; i < TrainingInputs.length; i++) {
+                    hidden.train(TrainingInputs[i]);
                 }
-            }
-            iterations++;
-        } while(incorrect != 0);
-        System.out.println(iterations);
+                for(int i = 0; i < realInputs.length; i++) {
+                    if(hidden.guess(realInputs[i]) != realInputs[i].getValue()) {
+                        incorrect++;
+                    }
+                }
+                iterations++;
+            } while(incorrect != 0);
+            save(iterations);
+            times--;
+            System.out.println(times);
+        }
+    }
+    
+    static void save(int toWrite) throws IOException {
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter("outputs.txt", true));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        writer.write(toWrite + "\n");
+        writer.flush();
         
     }
     
